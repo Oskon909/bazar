@@ -13,6 +13,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class Subcategory(models.Model):
     category = models.ForeignKey(Category, related_name='Subcategory_Category', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, verbose_name='Subcategory')
@@ -30,6 +31,9 @@ class City(models.Model):
 
 class PhoneNumber(models.Model):
     phone_number_0 = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.phone_number_0
 
 
 class Post(models.Model):
@@ -78,3 +82,6 @@ class Subscription(models.Model):
     choice = models.CharField(max_length=100, choices=LIST, default=('ordinary', 'ordinary'))
     date_created = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.choice

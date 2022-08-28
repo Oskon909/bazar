@@ -3,13 +3,17 @@ from rest_framework import routers
 
 from .views import *
 
-urlpatterns = [
+router = routers.DefaultRouter()
+router.register('', PostAddViewSet, 'Add')
 
-    path("12", CategoryAPIView.as_view()),
-    path('13', SubscriptionApi.as_view()),
-    path('14', NewAdApiView.as_view()),
-    path('15', FilterAPIView.as_view()),
-    path('16', ProductList.as_view()),
-    path('17', SearchAPIListView.as_view()),
-    path('18', PostFilterList.as_view()),
+urlpatterns = [
+    path('Add/', include(router.urls)),
+    path('Category', CategoryAPIView.as_view()),
+    path('Subscription', SubscriptionApi.as_view()),
+    path('New', NewAdApiView.as_view()),
+    path('Ordering', FilterAPIView.as_view()),
+    path('Filter', Filter.as_view()),
+    path('Search', SearchAPIListView.as_view()),
+    path('filterCategory', PostFilterList.as_view()),
+    path('sub/<int:pk>', SubcategoryAPIView.as_view())
 ]

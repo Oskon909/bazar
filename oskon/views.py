@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from rest_framework import generics, viewsets, status, filters as f
 from rest_framework.response import Response
@@ -69,7 +70,6 @@ class PostFilterList(generics.ListAPIView):
     filterset_class = Filter
 
 
-
 # Фильтры
 class FilterAPIView(generics.ListAPIView):
     queryset = Post.objects.all()
@@ -87,10 +87,40 @@ class ProductFilter(filters.FilterSet):
         fields = ['category', 'city']
 
 
-class ProductList(generics.ListAPIView):
+class Filter(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = SearchSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = ProductFilter
 
 
+# ____________________________
+
+class SubcategoryAPIView(APIView):
+    def get(self, request, pk):
+
+        posts = Post.objects.filter(category=pk)
+        serializer222 = SearchSerializer(posts, many=True).data
+
+        count = dict()
+        for i in Subcategory.objects.values('id', 'title', 'category').filter(category=pk):
+            count[i['title']] = Post.objects.filter(subcategory=i['id']).count()
+            idcategory = i['category']
+
+        try:
+            NameCategory = Category.objects.filter(id=idcategory).values('title')
+        except:
+            raise Http404
+
+        Name = NameCategory[0]['title']
+        context = {
+            'Category': Name,
+            'Subcategory': count,
+            Name: serializer222
+        }
+        return Response(context)
+
+
+class PostAddViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = AddPostSerializer

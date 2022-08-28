@@ -16,7 +16,7 @@ class Subscription0(serializers.ModelSerializer):
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
-    Subscription = Subscription0(many=True, read_only=True)
+    Subscription = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Post
@@ -34,7 +34,34 @@ class NewSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('title', 'from_price', 'image', 'subcategory', 'date_created')
 
+
 class SearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields =('title','image','from_price','subcategory')
+        fields = ('title', 'image', 'from_price', 'subcategory')
+
+
+class SubcategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subcategory
+        fields = ('id', 'title', 'category')
+
+
+# Добавления постов
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = ('post', 'image')
+
+
+class AddPostSerializer(serializers.ModelSerializer):
+    # Image_Post = ImageSerializer(many=True, read_only=True)  # Вложенный Сериализатор
+    Image_Post = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = Post
+        fields = ('id', 'category', 'subcategory',
+                  'title', 'from_price', 'to_price',
+                  'description', 'Image_Post', 'city',
+                  'email', 'phone_number'
+                  )
