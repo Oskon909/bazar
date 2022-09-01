@@ -1,3 +1,0 @@
-restframework
-django-jazzmin
-pillow

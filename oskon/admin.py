@@ -12,3 +12,5 @@ admin.site.register(Favorite)
 admin.site.register(Subscription)
 admin.site.register(Post)
 admin.site.register(Image)
+
+

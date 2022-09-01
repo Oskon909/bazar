@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 router.register('', PostAddViewSet, 'Add')
 
 urlpatterns = [
-    path('Add/', include(router.urls)),
+    path('list/', include(router.urls)),
     path('Category', CategoryAPIView.as_view()),
     path('Subscription', SubscriptionApi.as_view()),
     path('New', NewAdApiView.as_view()),
@@ -15,5 +15,12 @@ urlpatterns = [
     path('Filter', Filter.as_view()),
     path('Search', SearchAPIListView.as_view()),
     path('filterCategory', PostFilterList.as_view()),
-    path('sub/<int:pk>', SubcategoryAPIView.as_view())
+    path('sub/<int:pk>', SubcategoryAPIView.as_view()),
+
+
+    # path('view/<int:pk>',ViewNews.as_view()),
+    path('view/<str:pk>', ViewNews.as_view()),
+
+
+
 ]

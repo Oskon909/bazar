@@ -63,5 +63,7 @@ class AddPostSerializer(serializers.ModelSerializer):
         fields = ('id', 'category', 'subcategory',
                   'title', 'from_price', 'to_price',
                   'description', 'Image_Post', 'city',
-                  'email', 'phone_number'
+                  'email', 'phone_number','views'
                   )
+
+

@@ -49,17 +49,36 @@ class Post(models.Model):
     to_price = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(max_length=100)
+    views = models.IntegerField(default=0)
+
+    # def get(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     self.object.views += 1
+    #     self.object.save()
+    #     context = self.get_context_data(object=self.object)
+    # def save(self, *args, **kwargs):
+    #     self.views += 1
+    #     super(Post, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
 
 
 class Views(models.Model):
+    user_id = models.CharField(max_length=10)
     date = models.DateTimeField(auto_now_add=True)
-    views = models.IntegerField()
+    views = models.IntegerField(default=0)
     post = models.ForeignKey(Post, related_name='Views_Post', on_delete=models.CASCADE)
 
 
+# class Count(models.Model):
+#     user_id = models.CharField(max_length=10)
+
+##############
+
+
+####################
 class Image(models.Model):
     post = models.ForeignKey(Post, related_name='Image_Post', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, verbose_name='Фотография')
