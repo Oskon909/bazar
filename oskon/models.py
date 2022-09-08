@@ -51,16 +51,6 @@ class Post(models.Model):
     email = models.EmailField(max_length=100)
     views = models.IntegerField(default=0)
 
-    # def get(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     self.object.views += 1
-    #     self.object.save()
-    #     context = self.get_context_data(object=self.object)
-    # def save(self, *args, **kwargs):
-    #     self.views += 1
-    #     super(Post, self).save(*args, **kwargs)
-
-
     def __str__(self):
         return self.title
 
@@ -72,10 +62,6 @@ class Views(models.Model):
     post = models.ForeignKey(Post, related_name='Views_Post', on_delete=models.CASCADE)
 
 
-# class Count(models.Model):
-#     user_id = models.CharField(max_length=10)
-
-##############
 
 
 ####################

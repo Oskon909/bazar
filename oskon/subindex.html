@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Авто, запчасти, услуги - auto.doska.kg - интернет авторынок Кыргызстана.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Авто,автоуслуги,купить,продать,авторынок,автомобили,запчасти,сто,продать машину,купить машину в Бишкеке,объявления,салоны,услуги,ремонт" />
+    <link rel="stylesheet" type="text/css" href="/css/2_style.css?1" />
+
+    
+    <link rel="stylesheet" href="/ui-css/fontello/css/ai.css?2">
+    <link rel="stylesheet" href="/ui-css/fontello/css/animation.css?2"><!--[if IE 7]><link rel="stylesheet" href="/ui-css/fontello/css/ai-ie7.css?2"><![endif]-->
+      
+    <script src="//static.akipress.org/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/js.js"></script>
+    <script async src='//online.akipress.org/counter/?getjs&v1_2'></script>        <script>
+
+      function getexistModelList(){
+
+        var mark = $("#marks").val();
+        if(mark==0){$("#showmodel").html("");}
+        else{
+          model='';
+          $.get("/modules/get_newexistmodel.php?mark="+mark+model,
+            function(data){
+              $("#showmodel").html(data);
+            }
+          );
+        }
+      }
+    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMW4L3KL6T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZMW4L3KL6T');
+
+    
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-179005-26', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+    <script>
+      if(!checkCookie('rand')){
+        setCookie('rand','1552fcdafae2d4adcd13556565b8a5f2',999999);
+      }
+      if(!checkCookie('b_a')){
+        setCookie('b_a','1',999999);
+      }
+    </script>
+
+  </head>
+  <body>
+    <a name="top"></a>
+
+    <div class="jarnama-wrap center">
+                    <ins data-revive-zoneid="132" data-revive-id="64c128dda166fb7995676143ecac3c66"></ins>
+            </div>
+  <div class="top">
+    <div class="main">
+      <div class="logo">
+        <a href='/'>
+          <svg width="100" height="45">
+            <image xlink:href="/images/logo-auto.svg" src="//static.akipress.org/img/auto2.0/logo_07.png" width="100" height="45" />
+          </svg></a>
+      </div>
+      <div class="countad">
+        <span title="Активные за сегодня">Активных сегодня:  <b>110</b> объявлений</span><br>
+        <span title="Активные">За 2 недели: <b>333</b> объявлений</span>
+      </div>
+      <div class="buttons">
+        <a href="/add/" class="btn btn_blue">Добавить объявление бесплатно</a>
+        <a href='/account/' class='btn btn_green'>Вход</a>
+              </div>
+      <div class="sections">
+        <a href='/carsfind/'>Авто</a>
+        <a href='/partsfind/'>Запчасти</a>
+        <a href='/servicefind/'>Услуги</a>
+        <a href='//doska.kg/' class="red">Доска</a>
+      </div>
+      <div class="C"></div>
+    </div>
+  </div>
+  <div class="main">
+
+<div class="blank">
+  <div class="right_panel"></div>
+  <div class="content">
+    <div class="block_find_min" style='background: url("/images/search_block_min2.jpg") right top no-repeat;'>
+      <form action='/carsfind/' id='advanced_search' method='GET'>
+        <div class="header">Поиск авто</div>
+        <div class='block'>
+          <select id='marks' name='mark' onchange='getexistModelList()'>
+            <option value='0'>Все марки</option>
+            <option value='2'>Audi [всего: 1]</option><option value='4'>BMW [всего: 5]</option><option value='6'>Cadillac [всего: 1]</option><option value='7'>Chevrolet [всего: 2]</option><option value='43'>Daewoo [всего: 1]</option><option value='12'>Ford [всего: 1]</option><option value='51'>GAZ (ГАЗ) [всего: 2]</option><option value='14'>Honda [всего: 2]</option><option value='16'>Hyundai [всего: 5]</option><option value='17'>Infiniti [всего: 1]</option><option value='20'>Kia [всего: 3]</option><option value='46'>Lada (ВАЗ) [всего: 1]</option><option value='23'>Lexus [всего: 10]</option><option value='25'>Mazda [всего: 4]</option><option value='26'>Mercedes-Benz [всего: 15]</option><option value='28'>Mitsubishi [всего: 3]</option><option value='29'>Nissan [всего: 2]</option><option value='64'>Ssang Yong [всего: 1]</option><option value='34'>Subaru [всего: 2]</option><option value='36'>Toyota [всего: 11]</option><option value='38'>Volkswagen [всего: 3]</option><option value='96'>Прочие [всего: 1]</option>
+      </select>
+      
+      <div id='showmodel'>
+        <select id='marks' name='mark'>
+          <option value='0'>Все модели</option>
+        </select>
+      </div><br>
+
+      <select name='year_from'>
+        <option value='0'>Год от</option>
+<option value='2022'>2022</option><option value='2021'>2021</option><option value='2020'>2020</option><option value='2019'>2019</option><option value='2018'>2018</option><option value='2017'>2017</option><option value='2016'>2016</option><option value='2015'>2015</option><option value='2014'>2014</option><option value='2013'>2013</option><option value='2012'>2012</option><option value='2011'>2011</option><option value='2010'>2010</option><option value='2009'>2009</option><option value='2008'>2008</option><option value='2007'>2007</option><option value='2006'>2006</option><option value='2005'>2005</option><option value='2004'>2004</option><option value='2003'>2003</option><option value='2002'>2002</option><option value='2001'>2001</option><option value='2000'>2000</option><option value='1999'>1999</option><option value='1998'>1998</option><option value='1997'>1997</option><option value='1996'>1996</option><option value='1995'>1995</option><option value='1994'>1994</option><option value='1993'>1993</option><option value='1992'>1992</option><option value='1991'>1991</option><option value='1990'>1990</option><option value='1989'>1989</option><option value='1988'>1988</option><option value='1987'>1987</option><option value='1986'>1986</option><option value='1985'>1985</option><option value='1984'>1984</option><option value='1983'>1983</option><option value='1982'>1982</option><option value='1981'>1981</option><option value='1980'>1980</option><option value='1979'>1979</option><option value='1978'>1978</option><option value='1977'>1977</option><option value='1976'>1976</option><option value='1975'>1975</option><option value='1974'>1974</option><option value='1973'>1973</option><option value='1972'>1972</option><option value='1971'>1971</option><option value='1970'>1970</option><option value='1969'>1969</option><option value='1968'>1968</option><option value='1967'>1967</option><option value='1966'>1966</option><option value='1965'>1965</option><option value='1964'>1964</option><option value='1963'>1963</option><option value='1962'>1962</option><option value='1961'>1961</option><option value='1960'>1960</option><option value='1959'>1959</option><option value='1958'>1958</option><option value='1957'>1957</option><option value='1956'>1956</option><option value='1955'>1955</option><option value='1954'>1954</option><option value='1953'>1953</option><option value='1952'>1952</option><option value='1951'>1951</option><option value='1950'>1950</option><option value='1949'>1949</option><option value='1948'>1948</option><option value='1947'>1947</option><option value='1946'>1946</option><option value='1945'>1945</option>
+      </select>
+      <select name='price_to'>
+        <option value='0'>Цена до</option>
+    <option value='100000'>100 000 сом</option><option value='200000'>200 000 сом</option><option value='300000'>300 000 сом</option><option value='400000'>400 000 сом</option><option value='500000'>500 000 сом</option><option value='600000'>600 000 сом</option><option value='700000'>700 000 сом</option><option value='800000'>800 000 сом</option><option value='900000'>900 000 сом</option><option value='1000000'>1 000 000 сом</option><option value='1200000'>1 200 000 сом</option><option value='1400000'>1 400 000 сом</option><option value='1600000'>1 600 000 сом</option><option value='1800000'>1 800 000 сом</option><option value='2000000'>2 000 000 сом</option><option value='2500000'>2 500 000 сом</option><option value='3000000'>3 000 000 сом</option><option value='3500000'>3 500 000 сом</option><option value='4000000'>4 000 000 сом</option><option value='4500000'>4 500 000 сом</option><option value='5000000'>5 000 000 сом</option><option value='6000000'>6 000 000 сом</option><option value='7000000'>7 000 000 сом</option><option value='8000000'>8 000 000 сом</option><option value='9000000'>9 000 000 сом</option><option value='10000000'>10 000 000 сом</option></select><br>
+          <div class="search_btn">
+            <input class='btn btn_green' type='submit' value='Найти'> <a href="/carsfind/">Раcширенный поиск</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class='main_last_items'>
+      <div class='header'>Горячие <a href='/inform:news/id:76/'>Как сюда попасть?</a></div>
+      <div class='items'>
+        <a class='autolist_min' href='/auto:148527/' title='GAZ (ГАЗ) 24 1982г. 499 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/27/763410-87662106.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            GAZ (ГАЗ) 24<br>
+            1982г. 499 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153706/' title='Mitsubishi Pajero 2007г. 1 335 100 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/206/793714-1329.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mitsubishi Pajero<br>
+            2007г. 1 335 100 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153126/' title='Прочие eltro 2021г. 28 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/126/790182-4210.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Прочие eltro<br>
+            2021г. 28 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152279/' title='Hyundai Sonata 1996г. 155 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/279/784837-4210.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Hyundai Sonata<br>
+            1996г. 155 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151626/' title='Mitsubishi Galant 2008г. 920 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/126/781844-87802931.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mitsubishi Galant<br>
+            2008г. 920 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153718/' title='Lexus RX 350 2017г. 3 800 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/218/794054-87717879.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus RX 350<br>
+            2017г. 3 800 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153650/' title='Lexus LX 570 2016г. 7 700 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/150/793222-87717879.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus LX 570<br>
+            2016г. 7 700 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152705/' title='Hyundai Sonata 1996г. 155 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/205/788402-87797552.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Hyundai Sonata<br>
+            1996г. 155 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151962/' title='GAZ (ГАЗ) 24 1982г. 510 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/462/788085-87662106.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            GAZ (ГАЗ) 24<br>
+            1982г. 510 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152441/' title='Volkswagen CRAFTER 50 2007г. 13 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/441/786500-10018773.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Volkswagen CRAFTER 50<br>
+            2007г. 13 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153526/' title='Audi A4 2005г. 622 600 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/26/792386-87782944.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Audi A4<br>
+            2005г. 622 600 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153453/' title='Mercedes-Benz A klasse (W168) 2005г. 530 111 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/453/791849-87782944.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mercedes-Benz A klasse (W168)<br>
+            2005г. 530 111 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153722/' title='Mazda 3 2008г. 2 500 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/222/794094-87782944.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mazda 3<br>
+            2008г. 2 500 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153726/' title='Прочие Прочие 2022г. 2 500 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/226/794118-87782944.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Прочие Прочие<br>
+            2022г. 2 500 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153739/' title='Lexus RX 450 h 2019г. 4 500 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/239/794239-10050561.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus RX 450 h<br>
+            2019г. 4 500 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153735/' title='Lexus RX 300 2001г. 890 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/235/794223-10017617.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus RX 300<br>
+            2001г. 890 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153734/' title='Subaru B9 Tribeca 2007г. 971 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/234/794202-10017617.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Subaru B9 Tribeca<br>
+            2007г. 971 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153730/' title='Mercedes-Benz S klasse (W220 кузов) 2002г. 500 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/230/794166-1.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mercedes-Benz S klasse (W220 кузов)<br>
+            2002г. 500 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153238/' title='Ford Ka 1996г. 75 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/238/790570-10034898.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Ford Ka<br>
+            1996г. 75 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152656/' title='Nissan Primera 2006г. 340 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/156/791119-10015810.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Nissan Primera<br>
+            2006г. 340 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151371/' title='JCB 3СХ 2019г. 6 375 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/371/780570-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB 3СХ<br>
+            2019г. 6 375 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152507/' title='Infiniti QX 2021г. 110 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/7/787051-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Infiniti QX<br>
+            2021г. 110 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151374/' title='JCB PB175 2020г. 4 250 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/374/780590-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB PB175<br>
+            2020г. 4 250 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151688/' title='JCB Zoomlion 2021г. 1 800 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/188/782163-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB Zoomlion<br>
+            2021г. 1 800 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151987/' title='JCB JS 205 2021г. 10 625 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/487/783546-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB JS 205<br>
+            2021г. 10 625 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151402/' title='JCB 540-140 2020г. 11 900 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/402/780731-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB 540-140<br>
+            2020г. 11 900 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151679/' title='JCB 4CX 2021г. 13 000 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/179/782120-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB 4CX<br>
+            2021г. 13 000 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:151372/' title='JCB JS305 2020г. 17 850 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/372/780577-87813028.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            JCB JS305<br>
+            2020г. 17 850 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153699/' title='Mercedes-Benz Прочие 1991г. 260 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/199/793655-87666187.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mercedes-Benz Прочие<br>
+            1991г. 260 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:153715/' title='КамАЗ Бортовой 1986г. 766 650 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/215/793983-87816654.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            КамАЗ Бортовой<br>
+            1986г. 766 650 сом
+        </a>
+      </div>
+      <div class='right'><a class='btn btn_blue' href='/carsfind/'>Все авто</a></div>
+    </div>      <div class='aaa_coads'>
+        <!-- 650 * 150 -->
+        <script type='text/javascript'><!--//<![CDATA[
+       document.MAX_ct0 ='INSERT_ENCODED_CLICKURL_HERE';
+
+       var m3_u = (location.protocol=='https:'?'https://aaa.akipress.org/www/delivery/ajs.php':'http://aaa.akipress.org/www/delivery/ajs.php');
+       var m3_r = Math.floor(Math.random()*99999999999);
+       if (!document.MAX_used) document.MAX_used = ',';
+       document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+       document.write ("?zoneid=564");
+       document.write ('&amp;cb=' + m3_r);
+       if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+       document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+       document.write ("&amp;loc=" + escape(window.location));
+       if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+       if (document.context) document.write ("&context=" + escape(document.context));
+       if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+           document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+       }
+       if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+       document.write ("'><\/scr"+"ipt>");
+    //]]>--></script><noscript><a href='http://aaa.akipress.org/www/delivery/ck.php?n=a419681c&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://aaa.akipress.org/www/delivery/avw.php?zoneid=564&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a419681c&amp;ct0=INSERT_ENCODED_CLICKURL_HERE' border='0' alt='' /></a></noscript>
+      </div>
+    <div class='main_last_items'>
+      <div class='header'>Авто на заказ <a href='/inform:news/id:84/'>Как сюда попасть?</a></div>
+      <div class='items' style='height: 308px;'>
+        <a class='autolist_min' href='/auto:152581/' title='Hyundai Getz 2008г. 480 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/81/787763-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Hyundai Getz<br>
+            2008г. 480 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152590/' title='Lexus RX 350 2021г. 7 468 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/90/787871-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus RX 350<br>
+            2021г. 7 468 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152424/' title='Mercedes-Benz S klasse (W221 кузов) 2010г. 1 665 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/424/786348-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mercedes-Benz S klasse (W221 кузов)<br>
+            2010г. 1 665 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152575/' title='Lexus RX 350 2015г. 2 332 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/75/787674-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus RX 350<br>
+            2015г. 2 332 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152578/' title='Chevrolet Прочие 2016г. 3 750 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/78/787722-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Chevrolet Прочие<br>
+            2016г. 3 750 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152583/' title='Mitsubishi Pajero 2011г. 1 538 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/83/787798-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Mitsubishi Pajero<br>
+            2011г. 1 538 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152576/' title='BMW Прочие 2014г. 1 700 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/76/787691-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            BMW Прочие<br>
+            2014г. 1 700 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152585/' title='Kia Прочие 2021г. 2 204 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/85/787819-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Kia Прочие<br>
+            2021г. 2 204 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152577/' title='Honda Civic 2008г. 675 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/77/787706-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Honda Civic<br>
+            2008г. 675 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152582/' title='BMW X3 2013г. 1 465 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/82/787785-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            BMW X3<br>
+            2013г. 1 465 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152591/' title='Infiniti QX 2012г. 1 794 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/91/787886-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Infiniti QX<br>
+            2012г. 1 794 000 сом
+        </a>
+      
+        <a class='autolist_min' href='/auto:152586/' title='Lexus IS 250 2014г. 1 862 000 сом'>
+          <div style='background:url(//static.akipress.org/st_autodoska/86/787836-87796273.1.mini2.jpg) center no-repeat;background-size:cover;'>
+            
+          </div>
+            Lexus IS 250<br>
+            2014г. 1 862 000 сом
+        </a>
+      </div>
+      <div class='right'><a class='btn btn_blue' href='/carsfind/?region=8'>Все авто</a></div>
+    </div>
+    <div class='aaa_coads'>
+    <ins data-revive-zoneid="49" data-revive-ct0="{clickurl_enc}" data-revive-id="64c128dda166fb7995676143ecac3c66"></ins>
+  </div>
+  <div class='main_last_items'>
+    <div class='header'>Запчасти <a href='/inform:news/id:80/'>Как сюда попасть?</a></div>
+    <div class='items' style='height: 450px;'>
+        <a class='autolist_min' href='/part:4473/'>
+          <img src='//static.akipress.org/st_autodoska/473/483039-87662106.1.mini2.jpg' style='max-height:86px;' alt='Продаю недорого новый дизельный двигатель Яаз-204 первой комплектации'>
+          <div class='bold tred'>Продаю недорого новый дизельный двигатель Яаз-204 первой комплектации 111000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:4443/'>
+          <img src='//static.akipress.org/st_autodoska/443/481062-87662106.1.mini2.jpg' style='max-height:86px;' alt='Продаю недорого  новые оригинальные запчасти на германские комбайны Е-516, Е-281, Е-302:'>
+          <div class='bold tred'>Продаю недорого  новые оригинальные запчасти на германские комбайны Е-516, Е-281, Е-302: 2300 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:4538/'>
+          <img src='//static.akipress.org/st_autodoska/38/504245-87662106.1.mini2.jpg' style='max-height:86px;' alt='Продаю запчасти на ЗИЛ.'>
+          <div class='bold tred'>Продаю запчасти на ЗИЛ. 98 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:4740/'>
+          <img src='//static.akipress.org/st_autodoska/240/512780-4210.1.mini2.jpg' style='max-height:86px;' alt='продаю запчасти на хонду одисей 2004 год RB 1 вариатор'>
+          <div class='bold tred'>продаю запчасти на хонду одисей 2004 год RB 1 вариатор 99999 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:4719/'>
+          <img src='//static.akipress.org/st_autodoska/219/511264-4210.1.mini2.jpg' style='max-height:86px;' alt='срочный выкуп аварийных авто расчет сразу 0704666666'>
+          <div class='bold tred'>срочный выкуп аварийных авто расчет сразу 0704666666 9999999 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1164/'>
+          <img src='//static.akipress.org/st_autodoska/164/222655-4210.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> 1000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1928/'>
+          <img src='//static.akipress.org/st_autodoska/428/498461-10015810.1.mini2.jpg' style='max-height:86px;' alt='Продаю двигатель по запчастям от Пежо J 5, объём 2,5 дизель.'>
+          <div class='bold tred'>Продаю двигатель по запчастям от Пежо J 5, объём 2,5 дизель. 5000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1017/'>
+          <img src='//static.akipress.org/st_autodoska/17/203024-10013223.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> &nbsp;</div>
+        </a>
+        <a class='autolist_min' href='/part:117/'>
+          <img src='//static.akipress.org/st_autodoska/117/205065-10013223.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> &nbsp;</div>
+        </a>
+        <a class='autolist_min' href='/part:438/'>
+          <img src='//static.akipress.org/st_autodoska/438/130590-10013223.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> &nbsp;</div>
+        </a>
+        <a class='autolist_min' href='/part:116/'>
+          <img src='//static.akipress.org/st_autodoska/116/205066-10013223.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> &nbsp;</div>
+        </a>
+        <a class='autolist_min' href='/part:354/'>
+          <img src='//static.akipress.org/st_autodoska/354/121242-8255.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> &nbsp;</div>
+        </a>
+        <a class='autolist_min' href='/part:1708/'>
+          <img src='//static.akipress.org/st_autodoska/208/285047-10012425.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> 12000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1709/'>
+          <img src='//static.akipress.org/st_autodoska/209/285064-10012425.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> 1500 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:3919/'>
+          <img src='//static.akipress.org/st_autodoska/419/410695-10012425.1.mini2.jpg' style='max-height:86px;' alt='Продаю магнитолу'>
+          <div class='bold tred'>Продаю магнитолу 1500 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:3918/'>
+          <img src='//static.akipress.org/st_autodoska/418/410694-10012425.1.mini2.jpg' style='max-height:86px;' alt='Продаю сиденье (кресло) Audi 100 C4'>
+          <div class='bold tred'>Продаю сиденье (кресло) Audi 100 C4 1500 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1221/'>
+          <img src='//static.akipress.org/st_autodoska/221/230896-10050379.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> 11000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:3509/'>
+          <img src='//static.akipress.org/st_autodoska/9/383544-10050379.1.mini2.jpg' style='max-height:86px;' alt='Honda Accord 1992г. Только левая фара ОРИГИНАЛ'>
+          <div class='bold tred'>Honda Accord 1992г. Только левая фара ОРИГИНАЛ 7000 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2318/'>
+          <img src='//static.akipress.org/st_autodoska/318/322862-87684037.1.mini2.jpg' style='max-height:86px;' alt='Скоростной редуктор 51:13 на Спринтер односкатный "Дельфин"'>
+          <div class='bold tred'>Скоростной редуктор 51:13 на Спринтер односкатный "Дельфин" 2150 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2314/'>
+          <img src='//static.akipress.org/st_autodoska/314/322857-87684037.1.mini2.jpg' style='max-height:86px;' alt='Удары в редукторе,при начале хода,сателлиты износ Sprinter спарка 741.130'>
+          <div class='bold tred'>Удары в редукторе,при начале хода,сателлиты износ Sprinter спарка 741.130 320 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2320/'>
+          <img src='//static.akipress.org/st_autodoska/320/322864-87684037.1.mini2.jpg' style='max-height:86px;' alt='Выработка дифференциала-корпуса в мост Гелендваген  G500,G55AMG,G63AMG'>
+          <div class='bold tred'>Выработка дифференциала-корпуса в мост Гелендваген  G500,G55AMG,G63AMG 720 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2319/'>
+          <img src='//static.akipress.org/st_autodoska/319/322863-87684037.1.mini2.jpg' style='max-height:86px;' alt='Крафтер 30-35, 51:13 9063501523  Усиленный редуктор для односкатника'>
+          <div class='bold tred'>Крафтер 30-35, 51:13 9063501523  Усиленный редуктор для односкатника 720 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2317/'>
+          <img src='//static.akipress.org/st_autodoska/317/322861-87684037.1.mini2.jpg' style='max-height:86px;' alt='Дифференциал в корпусе,мост 408-609 Мерседес Бус'>
+          <div class='bold tred'>Дифференциал в корпусе,мост 408-609 Мерседес Бус 600 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2316/'>
+          <img src='//static.akipress.org/st_autodoska/316/322860-87684037.1.mini2.jpg' style='max-height:86px;' alt='Раскрошило зуб главной пары моста Варио 512  передаточное 34:7'>
+          <div class='bold tred'>Раскрошило зуб главной пары моста Варио 512  передаточное 34:7 460 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2315/'>
+          <img src='//static.akipress.org/st_autodoska/315/322858-87684037.1.mini2.jpg' style='max-height:86px;' alt='Главная пара 36/11 (6683500839) редуктора 609 Rex, ускорить мост'>
+          <div class='bold tred'>Главная пара 36/11 (6683500839) редуктора 609 Rex, ускорить мост 460 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2322/'>
+          <img src='//static.akipress.org/st_autodoska/322/322866-87684037.1.mini2.jpg' style='max-height:86px;' alt='Разломала палец сателлитов редуктора  Фольксваген ЛТ 35 диаметр пальца 19'>
+          <div class='bold tred'>Разломала палец сателлитов редуктора  Фольксваген ЛТ 35 диаметр пальца 19 260 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2321/'>
+          <img src='//static.akipress.org/st_autodoska/321/322865-87684037.1.mini2.jpg' style='max-height:86px;' alt='Дифференциал переднего заднего  моста Гелендваген 350GD,G300TD'>
+          <div class='bold tred'>Дифференциал переднего заднего  моста Гелендваген 350GD,G300TD 320 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:2842/'>
+          <img src='//static.akipress.org/st_autodoska/342/357655-87684037.1.mini2.jpg' style='max-height:86px;' alt='Главная передача 37/9 (шестерня) 6023502939 Спринтер 416СDI'>
+          <div class='bold tred'>Главная передача 37/9 (шестерня) 6023502939 Спринтер 416СDI 460 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:4092/'>
+          <img src='//static.akipress.org/st_autodoska/92/431124-87684037.1.mini2.jpg' style='max-height:86px;' alt='A6113500126 Ремонтный комплект, дифференциала G-class AMG 5.5l'>
+          <div class='bold tred'>A6113500126 Ремонтный комплект, дифференциала G-class AMG 5.5l 320 сомов</div>
+        </a>
+        <a class='autolist_min' href='/part:1523/'>
+          <img src='//static.akipress.org/st_autodoska/23/302293-1044.1.mini2.jpg' style='max-height:86px;' alt=''>
+          <div class='bold tred'> 22500 сомов</div>
+        </a></div>
+    <div class='right'><a class='btn btn_blue' href='/partsfind/'>Все запчасти</a></div>
+  </div>
+  <div class='main_last_items'>
+    <div class='header'>Услуги <a href='/inform:news/id:80/'>Как сюда попасть?</a></div>
+    <div class='items' style='height: 340px;'>
+        <a href='/service:1533/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/33/459213-4210.1.mini2.jpg' alt='Куплю внедорожники аварийные нерабочее моторами с любыми проблемами дорого Lexus Toyotа тел 0704666666'>
+          Куплю внедорожники аварийные нерабочее моторами с любыми проблемами дорого Lexus Toyotа тел 0704666666<br>
+          <div class='grey'>Куплю внедорожники аварийные нерабочее моторами с любыми проблемами дорого Lexus Toyotа тел 07046666...</div>
+        </a>
+      
+        <a href='/service:11/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/11/239384-4210.1.mini2.jpg' alt='срочный выкуп авто любых в любом состоянии 0312474478 0555474478'>
+          срочный выкуп авто любых в любом состоянии 0312474478 0555474478<br>
+          <div class='grey'>куплю авто в любом состоянии можно не на ходу
+
+пpодать aвто, продать aвтoмобиль, пpoдать мaшину, п...</div>
+        </a>
+      
+        <a href='/service:53/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/53/779473-4210.1.mini2.jpg' alt='дам деньги под% срочный выкуп авто  0555474478 0551986965'>
+          дам деньги под% срочный выкуп авто  0555474478 0551986965<br>
+          <div class='grey'>деньги СРОЧНЫЙ ВЫКУП АВТО!!! Куплю авто в любом состоянии любой марки легко аварийные с не рабочим м...</div>
+        </a>
+      
+        <a href='/service:3310/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/310/779544-4210.1.mini2.jpg' alt='ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструментов  берем все тел 0703666666 0990565595 0704666666 с.лебединовка проспект победы 7а'>
+          ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструментов  берем все тел 0703666666 0990565595 0704666666 с.лебединовка проспект победы 7а<br>
+          <div class='grey'>Ломбард срочный выкуп в любые в любом состоянии авто золото недвижимости расчёт сразу 0772565595 070...</div>
+        </a>
+      
+        <a href='/service:1813/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/313/519371-4210.1.mini2.jpg' alt='Ломбард выкуп авто золото техники'>
+          Ломбард выкуп авто золото техники<br>
+          <div class='grey'>Ломбард срочный выкуп в любые в любом состоянии авто золото недвижимости расчёт сразу 0772565595 070...</div>
+        </a>
+      
+        <a href='/service:1374/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/374/412683-4210.1.mini2.jpg' alt='куплю авто дорого'>
+          куплю авто дорого<br>
+          <div class='grey'>Куплю  срочно не по скупке Хонда фит тойота Ист тойота витц Хонда цивик срочно срочно до 3000$ все в...</div>
+        </a>
+      
+        <a href='/service:1271/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/271/473661-4210.1.mini2.jpg' alt='СРОЧНЫЙ ВЫКУП АВТО!!! Куплю авто в любом состоянии любой марки легко аварийные с не рабочим мотором высокая оценка,выдача кредита под залог авто,спец техники,золота,телефоны,техники. АВТОЛОМБАРД низкие %% тел 0(704)66 66 66 WhatsApp расчет сразу'>
+          СРОЧНЫЙ ВЫКУП АВТО!!! Куплю авто в любом состоянии любой марки легко аварийные с не рабочим мотором высокая оценка,выдача кредита под залог авто,спец техники,золота,телефоны,техники. АВТОЛОМБАРД низкие %% тел 0(704)66 66 66 WhatsApp расчет сразу<br>
+          <div class='grey'>СРОЧНЫЙ ВЫКУП АВТО!!! Куплю авто в любом состоянии любой марки легко аварийные с не рабочим мотором ...</div>
+        </a>
+      
+        <a href='/service:2060/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/60/572783-4210.1.mini2.jpg' alt='Диагностика ходовой части автомобиля на вибростенде.'>
+          Диагностика ходовой части автомобиля на вибростенде.<br>
+          <div class='grey'>Диагностика подвески включает в себя проверку: 
+• Проверка передних и задних амортизаторов
+• Прове...</div>
+        </a>
+      
+        <a href='/service:4157/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/157/790100-4210.1.mini2.jpg' alt='сварщик ремонт глушителей'>
+          сварщик ремонт глушителей<br>
+          <div class='grey'>сварщик ремонт глушителей катализаторов резонаторов любые сварочные работы с.лебединовка сто автомир...</div>
+        </a>
+      
+        <a href='/service:3147/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/147/771205-4210.1.mini2.jpg' alt='ломбард партнер капитал'>
+          ломбард партнер капитал<br>
+          <div class='grey'>АВТОЛОМБАРД 0704666666
+Выдаём быстрые займы,под залог Авто (АВТО НЕ ИЗЫМАЕТСЯ)
+Займы выдаются в те...</div>
+        </a>
+      
+        <a href='/service:212/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/212/779539-4210.1.mini2.jpg' alt='срочный выкуп авто любых в любом состоянии 0551986965 0555474478'>
+          срочный выкуп авто любых в любом состоянии 0551986965 0555474478<br>
+          <div class='grey'>Ломбард срочный выкуп в любые в любом состоянии авто золото недвижимости расчёт сразу 0772565595 070...</div>
+        </a>
+      
+        <a href='/service:3495/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/495/782092-4210.1.mini2.jpg' alt='ломбард партнер капитал'>
+          ломбард партнер капитал<br>
+          <div class='grey'>ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструменто...</div>
+        </a>
+      
+        <a href='/service:3496/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/496/782093-4210.1.mini2.jpg' alt='скупка авто дорого'>
+          скупка авто дорого<br>
+          <div class='grey'>тел 0703666666 0990565595 0704666666 с.лебединовка проспект победы 7а СКУПКА АВТО ДОРОГО РАСЧЕТ СРАЗ...</div>
+        </a>
+      
+        <a href='/service:3019/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/19/764111-4210.1.mini2.jpg' alt='ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструментов  берем все тел 0703666666 0990565595 0704666666 с.лебединовка проспект победы 7а'>
+          ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструментов  берем все тел 0703666666 0990565595 0704666666 с.лебединовка проспект победы 7а<br>
+          <div class='grey'>ломбард партнер капитал под залог авто. спец техники.золото.оргтехники.сотовых телефонов.инструменто...</div>
+        </a>
+      
+        <a href='/service:1514/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/14/760025-87717460.1.mini2.jpg' alt='Эвакуатор Бишкек! Круглосуточно! Недорого! 0 702 501 702'>
+          Эвакуатор Бишкек! Круглосуточно! Недорого! 0 702 501 702<br>
+          <div class='grey'>Быстро,надёжно,недорого перевезем Ваше авто Услуги эвакуатора по городу Бишкек и регионам. Круглосут...</div>
+        </a>
+      
+        <a href='/service:1530/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/30/764128-87721122.1.mini2.jpg' alt='Эвакуатор0 776 501 702 Бишкек! 24 часа! Недорого!'>
+          Эвакуатор0 776 501 702 Бишкек! 24 часа! Недорого!<br>
+          <div class='grey'>Услуги эвакуатора г.Бишкек! недорого,звоните договоримся!0 776 501 702    АВТО С НИЗКИМ КЛИРЕНСОМ! Э...</div>
+        </a>
+      
+        <a href='/service:2109/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/109/764151-87721122.1.mini2.jpg' alt='Эвакуатор 0556501702 Иссык Куль,Балыкчи,Боом.'>
+          Эвакуатор 0556501702 Иссык Куль,Балыкчи,Боом.<br>
+          <div class='grey'>Эвакуатор 0 556 501 702 Иссык Куль,Балыкчи,Боом.  АВТО С НИЗКИМ КЛИРЕНСОМ! ЭВАКУАТОР ТОКМОК,ЭВАКУАТО...</div>
+        </a>
+      
+        <a href='/service:1529/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/29/764147-87721120.1.mini2.jpg' alt='Эвакуатор ,0557989198, Бишкек!Токмок, Кемин, Боом! Круглосуточно! Недорого!'>
+          Эвакуатор ,0557989198, Бишкек!Токмок, Кемин, Боом! Круглосуточно! Недорого!<br>
+          <div class='grey'>Быстро,надёжно,недорого перевезем Ваше авто Услуги эвакуатора по городу Бишкек и регионам. Круглосут...</div>
+        </a>
+      
+        <a href='/service:3316/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/316/779637-87797552.1.mini2.jpg' alt='Прокат строительного инструмента и оборудование'>
+          Прокат строительного инструмента и оборудование<br>
+          <div class='grey'>Сдаю в аренду 
+Строительные леса                    Телескопический стойки
+опалубки (Корея)
+бетон...</div>
+        </a>
+      
+        <a href='/service:3247/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/247/776897-87797552.1.mini2.jpg' alt='Срочный выкуп 0703666666 0990565595'>
+          Срочный выкуп 0703666666 0990565595<br>
+          <div class='grey'>Срочный выкуп...</div>
+        </a>
+      
+        <a href='/service:3252/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/252/779348-87797552.1.mini2.jpg' alt='Выкуп авто.Золото.'>
+          Выкуп авто.Золото.<br>
+          <div class='grey'>Ломбард «Партнёр капитал»
+Высокая оценка
+Дорого Расчёт сразу
+Тел:0704666666 0772565595...</div>
+        </a>
+      
+        <a href='/service:3271/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/271/778160-87797552.1.mini2.jpg' alt='Услуги СТО АВТОМИР'>
+          Услуги СТО АВТОМИР<br>
+          <div class='grey'>Улуги СТО АВТОМИР 
+-мотористы  тел 0552300396
+-Ремонт ходовой части 
+-чистка форсунок 
+-сварочны...</div>
+        </a>
+      
+        <a href='/service:3270/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/270/778158-87797552.1.mini2.jpg' alt='Услуги СТО АВТОМИР'>
+          Услуги СТО АВТОМИР<br>
+          <div class='grey'>Объявления  Автобизнес  СТО
+автомир 
+АДРЕС
+лебединовка поспект побды 9
+ТЕЛЕФОНЫ
+0551986965
+Диа...</div>
+        </a>
+      
+        <a href='/service:3101/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/101/769041-87797552.1.mini2.jpg' alt='Срочный выкуп 24 часа'>
+          Срочный выкуп 24 часа<br>
+          <div class='grey'>Срочный выкуп авто 24 часа.Купим ваш автомобиль в любом состоянии в день обращения 0704 666666...</div>
+        </a>
+      
+        <a href='/service:3687/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/187/783394-87797552.1.mini2.jpg' alt='Грузоперевозки-Портер такси'>
+          Грузоперевозки-Портер такси<br>
+          <div class='grey'>Грузоперевозки Портер  такси 
+До2000 тонн
+0(551)98-69-65 
+с.Лебединовка...</div>
+        </a>
+      
+        <a href='/service:3245/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/245/776895-87797552.1.mini2.jpg' alt='Ломбард авто.Высокая оценка.Низкие %'>
+          Ломбард авто.Высокая оценка.Низкие %<br>
+          <div class='grey'>Ломбард авто 
+Тел:0704666666 WhatsApp 
+0772565595 WhatsApp...</div>
+        </a>
+      
+        <a href='/service:3253/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/253/779352-87797552.1.mini2.jpg' alt='Срочный выкуп авто'>
+          Срочный выкуп авто<br>
+          <div class='grey'>Выкуп авто 0772565595...</div>
+        </a>
+      
+        <a href='/service:3254/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/254/776909-87797552.1.mini2.jpg' alt='Срочный выкуп 0704666666'>
+          Срочный выкуп 0704666666<br>
+          <div class='grey'>Срочный выкуп
+В любом состоянии...</div>
+        </a>
+      
+        <a href='/service:3277/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/277/778521-87797552.1.mini2.jpg' alt='Ломбард «Партнёр капитал»Берём все!!!'>
+          Ломбард «Партнёр капитал»Берём все!!!<br>
+          <div class='grey'>Ломбард «Партнёр капитал»с.Лебединовка проспект Победы 7 А.Берем всё!!!
+Авто мото вело фото телефон...</div>
+        </a>
+      
+        <a href='/service:3308/' class='servicelist_min'>
+          <img src='//static.akipress.org/st_autodoska/308/779483-87797552.1.mini2.jpg' alt='Автовыкуп Срочный выкуп автомобилей!'>
+          Автовыкуп Срочный выкуп автомобилей!<br>
+          <div class='grey'>Cрoчный выкуп битых aвто.
+Дoрого ! Раcчет в тeчении 10 минут. 
+Покупaем aвтo в любом cоcтoянии бит...</div>
+        </a>
+      </div>
+    <div class='right'><a class='btn btn_blue' href='/servicefind/'>Все услуги</a></div>
+  </div>
+  </div>
+</div>
+<div class="C"></div>
+</div>
+<div class="C"></div>
+<style>
+  .loadright,.loadleft{}
+</style>
+<div class="loadright"><div class='block center'>    <div>
+      <ins data-revive-zoneid="50" data-revive-ct0="{clickurl_enc}" data-revive-id="64c128dda166fb7995676143ecac3c66"></ins>
+    </div>
+  </div>
+    <div class='block'>
+      <div class='header'>Курс -  <span style='font-size: 75%;'>(2022-09-02 17:00:02)</span></div>
+      <div style='font-size: 1rem;'>
+        <b>$</b> -  Продажа: 83 | Покупка: 84
+      </div>
+    </div>
+  
+    <div class='block_news' style='margin:5px 0;height:auto;'>
+      <div class='header'>Полезное</div>
+      <a class='elem' href='/inform:usefull/show:customs/'>Растаможка на 2017-2019г.г.</a>
+    
+      <a class='elem' href='/inform:usefull/show:checkinprice4/'>Госпошлина за первичное оформление авто (5%)</a>
+    
+      <a class='elem' href='/inform:usefull/show:checkinprice3/'>Госпошлина за переоформление авто (1%)</a>
+    
+      <a class='elem' href='/inform:usefull/show:autotax_calc/'>Ставка налога на автотранспорт</a>
+    
+      <a class='elem' href='/inform:news/id:423/'>Размеры штрафов за нарушение ПДД</a>
+    </div>
+  <div class='block_news' style='margin-bottom:5px;height:auto;'>
+        <div class='header'>Новости</div>
+        <a class='elem' href='/inform:news/id:617/'>
+          
+          <div class='date'>07 Ноября 2018 (<span class='ai icon-eye-outline views'>13385</span>)</div>Схема — Как ввозят дорогие авто в Кыргызстан без уплаты таможенных платежей? 
+        </a>
+      
+        <a class='elem' href='/inform:news/id:616/'>
+          
+          <div class='date'>07 Ноября 2018 (<span class='ai icon-eye-outline views'>13604</span>)</div>Схема — Как «отмывают» раритетные авто через Кыргызстан?
+        </a>
+      
+        <a class='elem' href='/inform:news/id:615/'>
+          
+          <div class='date'>07 Ноября 2018 (<span class='ai icon-eye-outline views'>9076</span>)</div>Генпрокуратура обнародовала схемы, по которым за 2017-2018 годы завезено более 200 контрабандных автомашин
+        </a>
+      <div class='right'><a class='btn btn_blue' href='/inform:news/'>Все новости</a></div>
+    </div>
+  	<script>
+		var ad_refresh;
+		(function ($) {
+			'use strict';
+			function play() {
+				var $target = $('.doska_informer .item:first-child');
+				$target.slideUp('slow', function () {
+					$target.appendTo('.doska_informer').show();
+				});
+			}
+
+			$('.doska_informer').hover(function () {
+				clearInterval(ad_refresh);
+			}, function () {
+				ad_refresh = setInterval(function () {
+					play();
+				}, 2000);
+			});
+			ad_refresh = setInterval(function () {
+				play();
+			}, 2000);
+		})(jQuery);
+	</script>
+
+  <style>
+  .doska_informer,.doska_informer_logo{
+    
+      border: 1px solid #9ac337;background:#9ac337;
+    
+    }
+    .doska_informer_logo{box-sizing: border-box;padding: 5px;margin:5px auto 0 auto;}
+    .doska_informer_logo a{color: #fff;font-size:16px;font-family:Tahoma,Helvetica,sans-serif;}
+    .doska_informer{box-sizing: border-box;overflow: hidden;background:#fff;height:230px;margin:0 auto 5px auto;}
+    .doska_informer .item{padding:0 0 5px 0;}
+    .doska_informer .item>div{ width: 80px; height: 60px; float: left; margin:5px; }
+    .doska_informer img{max-width: 80px;max-height:60px;margin:5px;float:left;}
+    .doska_informer a{color:#0c79cc;text-decoration:none;font-size:13px;font-family:Tahoma,Helvetica,sans-serif;}
+    .doska_informer a:hover{text-decoration:underline;}
+  </style>
+  <div class='doska_informer_logo'><a href='http://doska.kg/cat:117'>Недвижимость</a></div>
+  <div class='doska_informer'>
+
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/49/728749.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1042125' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 43кв. м., этаж - 2/9, Центр. Посуточно. 2 часа от 600 сом. Ночь от 1500 сом. Все услов.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/79/686779.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1031021' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 45кв. м., этаж - 3/9, Центр. Посуточно. 2 часа от 600 сом. Продление по 100 сом. Ночь .</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/2/766402.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1051889' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 50кв. м., этаж - 2/9, Центр. Посуточно.  2 часа - от 600 сом. (последующие часы по 100.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/56/765456.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1051721' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 45кв. м., этаж - 2/9, Центр. Посуточно. 2 часа - от 600 сом. (последующие часы по 100 .</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/52/765452.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1051718' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 40кв. м., этаж - 2/9, Центр. Посуточно. Цены:  2 часа от 600 сом. Продление 100 сом. Н.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/30/734930.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1043724' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 42кв. м., этаж - 3/9, Центр. Посуточно. 2 часа от 600 сом. Продление по 100 сом. Ночь.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/35/774635.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1053720' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 40кв. м., этаж - 2/9, Центр. Посуточно. 2 часа - 600 сом, продление 100сом/час. Ночь -.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/61/723861.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1040362' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 47кв. м., этаж - 3/9, Центр. Посуточно. Цены: 2 часа от 600 сом. Продление по 100 сом..</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/49/767249.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052100' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 40кв. м., этаж - 2/9, Центр. Посуточно. 2 часа от 600 сом. Продление по 100 сом. Ночь .</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/59/767259.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052104' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 48кв. м., этаж - 3/9, Центр. Посуточно. Цены: 2 часа - от 600 сом. (последующие часы п.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/85/768585.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052392' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 42кв. м., этаж - 3/9, Центр. Посуточно. Цена: 2 часа от 600 сом, продление 100 сом. Но.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/14/771014.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052907' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 40кв. м., этаж - 2/9, Центр. Посуточно. 2 часа от 600 сом. Продление по 100 сом. Ночь .</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/78/768578.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052390' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 40кв. м., этаж - 2/9, Центр. Посуточно. Цены: 2 часа от 600 сом. Продление 100 сом. Но.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/20/770420.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1052803' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 50кв. м., этаж - 2/9, Центр. Посуточно. Цены:  2 часа от 600 сом. Продление по 100 сом.</span></a></div>
+
+  
+    <div class='1 item'><div style='background: url(//static.akipress.org/st_doska/64/719664.80.jpg) no-repeat center center; background-size: cover;'></div><a href='http://doska.kg/item:1039277' style='display:block;height:75px;overflow:hidden;'><b>1 500 сом</b> <span style='color:#111;'>Сдаю 1-комнатную квартиру, 50кв. м., этаж - 2/9, Центр. Посуточно. 2 часа от 600 сом. Продление по 100 сом. Ночь .</span></a></div>
+
+  </div><div class='block'>
+          <div class='header'>Отзывы и предложения</div>
+          
+    <form action='' method='POST' style='display: block;text-align: center;'>
+      
+      <input name='bugreport_email' type='hidden' value='' placeholder='Email не обязательно' style='width:80%;padding: 3px;font-size: 14px;border:1px solid #999;'>
+      <input type='hidden' name='bugreport_title' value=''>
+      <textarea name='bugreport_text' style='width:80%;padding: 3px;font-size: 14px;height: 80px;border:1px solid #999;' placeholder='Напишите отзыв или предложение, мы обязательно его рассмотрим!'></textarea>
+      <input disabled style='width:80%;padding: 5px;font-size: 14px;' type='submit' value='Отправить сообщение модератору' />
+      <div class='center'>Необходимо <a href='/account/'>авторизоваться.</a></div>
+    </form>
+  
+          <div style='font-size: 12px;padding: 8px 5px;'>
+            *Если у вас возникли вопросы или предложения по работе сайта, просим написать модератору личное сообщение.
+          </div>
+      </div>
+  <div class='back_fff shadow003 p55' style='margin-bottom: 5px;'>
+    <div class='block_title p55'>Игры</div>
+    <div class='clr'></div>
+    <a href='/games/' class='fs15'>
+      <img src='//static.akipress.org/img/auto2.0/game/game_banner.jpg' style='width: 140px;'>
+      <img src='//static.akipress.org/img/auto2.0/game/bullscows_ban.jpg' style='width: 140px;'>
+    </a>
+  </div></div>
+<div class="loadleft"></div>
+<script>
+  $(document).ready(function(){
+    rightpanel=$(".loadright").html();
+    leftpanel=$(".loadleft").html();
+    if(rightpanel){
+      $(".loadright").appendTo($(".right_panel"));
+    }
+    else if(leftpanel){
+      $(".loadleft").appendTo($(".left_panel"));
+    }
+  });
+</script>
+  <div style="text-align: center;padding: 10px;background: #eee;">
+    <a style="color:#005da8;font-size: 1.2rem;text-decoration: underline;" href="https://play.google.com/store/apps/details?id=kg.doska.auto">Установите приложение auto.doska.kg</a>
+  </div>
+  
+
+<div class="footer">
+  <div class="footer_block">
+    <div>
+      <a class="text_39f" href='/inform:news/id:523/'>Контакты</a> | <a class="text_39f" href='/inform:news/'>Новости</a> | <a class="text_39f" href='/inform:usefull/'>Полезное</a> | <a class="text_39f" href='/inform:news/id:82/'>Правила ресурса</a><br />
+      <a target="_blank" href="//reklama.akipress.org/price:2#child_34">Реклама на сайте</a>
+    </div>
+    <div>
+    <a href='https://akipress.org/dolbor/contacts/' target='_blank'>г.Бишкек, проспект Чынгыза Айтматова, 299/5</a>,<br>
+      Коммерческий отдел: <a href='tel:+996 (554) 20-29-11'>+996 (554) 20-29-11</a>,<br>
+      <a href='tel:+996 (554) 20-29-97'>+996 (554) 20-29-97</a><br>
+    </div>
+    <div>
+      <!-- WWW.NET.KG , code for //www.doska.kg -->
+      <a href="//www.net.kg/">
+        <script language="javascript">
+          java="1.0";
+          java1=""+"refer="+escape(document.referrer)+"&page="+
+              escape(window.location.href);
+          document.cookie="astratop=1; path=/"; java1+="&c="+(document.cookie?"yes":"now");
+        </script>
+
+        <script language="javascript1.1">java="1.1";java1+="&java="+(navigator.javaEnabled()?"yes":"now")</script>
+        <script language="javascript1.2">java="1.2";
+          java1+="&razresh="+screen.width+'x'+screen.height+"&cvet="+
+              (((navigator.appName.substring(0,3)=="Mic"))?
+                  screen.colorDepth:screen.pixelDepth)</script><script language="javascript1.3">java="1.3"</script>
+        <script language="javascript">java1+="&jscript="+java+"&rand="+Math.random();
+          document.write("<a href='//www.net.kg/?fromsite=210' target='_blank'><img "+
+              " src='//www.net.kg/img.php?id=210&"+java1+"&' border=0 alt='WWW.NET.KG' width='88' height='31'></a>")</script>
+        <noscript><a href=//www.net.kg/?fromsite=210 target=_blank><img src="//www.net.kg/img.php?id=210" border=0 alt="WWW.NET.KG" width='88' height='31'></a></noscript>
+      </a>
+      <!-- /WWW.NET.KG -->
+      <!-- Yandex.Metrika informer --><a href="https://metrika.yandex.ru/stat/?id=26175447&amp;from=informer" target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/26175447/3_0_788388FF_586368FF_1_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:26175447,lang:'ru'});return false}catch(e){}"/></a><!-- /Yandex.Metrika informer --><!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter26175447 = new Ya.Metrika({id:26175447, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/26175447" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+
+    </div>
+  </div>
+</div>
+<div class='totop icon-up-open-big' onclick='scrollToAnchor("top")'></div>
+
+<div class="compare_auto">
+  <div class="close right"><span class="icon-cancel-outline" onclick="hide('.compare_auto')"></span></div>
+    <div class="added"><span class="icon-ok-outline"></span>Добавлено в избранное</div>
+    <div class="favorites_count"></div>
+  <a href='/account/'>Войти</a> | <a href='/favorites/'>Посмотреть сравнение</a></div>
+
+<script>
+  /*
+  function car_favorite3(id,status,type){
+          var cookieValue = $.cookie("favorites");
+      if(cookieValue.length>0){
+        cookieValue.push({id:1});
+      }
+      else{
+        var cookieValue[id:1];
+      }
+      $.cookie("favorites", cookieValue, {
+        expires :30,
+        path    : '/',
+        domain  : 'auto.doska.kg'
+      });
+      each(key as cookieValue){
+        $(".debug").append(key+" - "+cookieValue[key]+"<br>")
+      }
+      }
+  */
+</script>
+
+<script async src="//aaa5.akipress.org/www/delivery/asyncjs.php"></script>
+<div class="debug"></div>
+
+</body>
+</html>

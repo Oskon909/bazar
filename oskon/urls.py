@@ -17,7 +17,6 @@ urlpatterns = [
     path('filterCategory', PostFilterList.as_view()),
     path('sub/<int:pk>', SubcategoryAPIView.as_view()),
 
-
     # path('view/<int:pk>',ViewNews.as_view()),
     path('view/<str:pk>', ViewNews.as_view()),
 

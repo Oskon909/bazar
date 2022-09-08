@@ -130,62 +130,50 @@ class PostAddViewSet(viewsets.ModelViewSet):
     serializer_class = AddPostSerializer
 
 
-############
-# class ViewNews(DetailView):
-#
-#     model = Post
-#     def get(self, request, *args, **kwargs):
-#         self.object = self.get_object()
-#         self.object.views += 1
-#         self.object.save()
-#         return None
 
 
-# posts = Post.objects.all()
-# serializer222 = SearchSerializer(posts, many=True).data
-#
-# return Response(serializer222)
+# Просмотр обьвления
+def get_post(ip, title):
 
-def get_user(name, title):
     data = redis.Redis()
-    f = data.get(name)
+    data_value = data.get(ip)
 
-    if f == None or f.decode('utf-8') != title:
-        data.mset({name: title})
-        value = data.get(name)
-        print(value.decode('utf-8'), "-----1-1")
+    print(data_value.decode('utf-8'),'1111')
+
+    if data_value is None or data_value.decode('utf-8') != title:
+        data.mset({ip: title})
         return False
     else:
         return True
 
+
+
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
+        ip = x_forwarded_for.split(',')
     else:
         ip = request.META.get('REMOTE_ADDR')
+
     return ip
+
+
 class ViewNews(APIView):
     def get(self, request, pk):
-        try:
-            posts = Post.objects.get(title=pk)
-            serializer = AddPostSerializer(posts, many=False).data
-        except:
-            return Response('Error')
+        posts = get_object_or_404(Post, title=pk)
+        serializer = AddPostSerializer(posts, many=False).data
 
         title = Post.objects.values('title').filter(title=pk)
         title = title[0]['title']
-        username = None
+        ip = get_client_ip(request)
 
-        if request.user.is_active:
-            username = request.user.username
-            if not get_user(username, title):
-                posts.views += 1
-                posts.save(update_fields=["views"])
-                serializer = AddPostSerializer(posts, many=False).data
-                context = {'list': username,
-                           'add': serializer}
-                return Response(context)
+        if not get_post(ip, title):
+            posts.views += 1
+            posts.save(update_fields=["views"])
+            serializer = AddPostSerializer(posts, many=False).data
+            context = {'IP': ip,
+                       'add': serializer}
+            return Response(context)
 
-            else:
-                return Response(serializer)
+        else:
+            return Response(serializer)
