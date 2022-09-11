@@ -56,12 +56,15 @@ class Post(models.Model):
 
 
 class Views(models.Model):
-    user_id = models.CharField(max_length=10)
-    date = models.DateTimeField(auto_now_add=True)
-    views = models.IntegerField(default=0)
+    user = models.CharField(max_length=100,null=True)
+    date = models.DateField(blank=True,null=True)
+    views = models.IntegerField(default=0,blank=True,null=True)
     post = models.ForeignKey(Post, related_name='Views_Post', on_delete=models.CASCADE)
 
-
+class Baza_view(models.Model):
+    view_key = models.ForeignKey(Post, related_name='baza', on_delete=models.CASCADE)
+    ip_or_user = models.CharField(max_length=100,null=True)
+    date = models.DateField(blank=True, null=True)
 
 
 ####################

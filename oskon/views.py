@@ -11,6 +11,7 @@ from rest_framework import filters
 from .models import Category, Subscription
 from .serializer import *
 from django_filters import rest_framework as filters
+import datetime
 
 
 # Create your views here.
@@ -130,21 +131,104 @@ class PostAddViewSet(viewsets.ModelViewSet):
     serializer_class = AddPostSerializer
 
 
-
-
 # Просмотр обьвления
-def get_post(ip, title):
+# def get_post(client, title):
+#
+#     data = redis.Redis()
+#     print('ppppppppppp')
+#     client = str(client)
+#     data_value = data.get(client)
+#
+#     print('kkkkkkk')
+#
+#
+#     if data_value is None or data_value.decode('utf-8') != title:
+#         data.mset({client: title})
+#         date=datetime.date()
+#         post=Post.objects.get(title=title)
+#
+#         # if Views.objects.get(date=date).filter(post=post)
+#         #     Views.objects.create(date=date,post=post)
+#
+#         Views.views += 1
+#         Views.save(update_fields=["views"])
+#         return False
+#     else:
+#         return True
+#
 
-    data = redis.Redis()
-    data_value = data.get(ip)
+def get_post(client, title, pk):
+    date = datetime.datetime.now(tz=None)
+    today = date.date()
 
-    print(data_value.decode('utf-8'),'1111')
+    post_object = Post.objects.get(title=pk)
 
-    if data_value is None or data_value.decode('utf-8') != title:
-        data.mset({ip: title})
-        return False
-    else:
+
+
+
+
+
+    try:
+        baza = Baza_view.objects.filter(view_key=post_object).values('ip_or_user', 'date')
+
+        print('lop')
+
+    except:
+
+        Baza_view.objects.create(view_key=post_object, ip_or_user=client, date=today)
+        # baza = Baza_view.objects.filter(view_key=post_object).values('ip_or_user', 'date')
+        Views.objects.create(post=post_object, date=today)
+
+        view_object = Views.objects.get()
+        view_object.views += 1
+        view_object.save(update_fields=["views"])
+
         return True
+    print('loeree')
+
+
+    list_user=[]
+    list_date=[]
+    for i in baza:
+        list_user.append(str(i['ip_or_user']))
+
+    print('kzkz')
+    for i in baza:
+        if str(i['ip_or_user']) == str(client) and i['date'] == today:
+            print('они равны')
+            print('lllllllllll')
+            return False
+
+
+
+
+    if str(client) in list_user:
+        name=Baza_view.objects.get(ip_or_user=client)
+        name.date=today
+        name.save(update_fields=["date"])
+
+        view_object = Views.objects.get()
+        view_object.views+=1
+        view_object.save(update_fields=["views"])
+        print('hello world')
+
+    else:
+        print('nnnnnnnnnnnnnnnn')
+        Baza_view.objects.create(view_key=post_object ,ip_or_user=client,date=today)
+
+        date_view = Views.objects.filter(post=post_object).filter(date=today).values('date')
+        if date_view == today:
+            pass
+        else:
+            Views.objects.create(post=post_object, date=today)
+
+        name = Baza_view.objects.get(ip_or_user=client)
+        name.date = today
+        name.save(update_fields=["date"])
+
+        view_object = Views.objects.get()
+        view_object.views += 1
+        view_object.save(update_fields=["views"])
 
 
 
@@ -161,19 +245,30 @@ def get_client_ip(request):
 class ViewNews(APIView):
     def get(self, request, pk):
         posts = get_object_or_404(Post, title=pk)
-        serializer = AddPostSerializer(posts, many=False).data
+
+        print(request.user.is_authenticated)
+        print(request.user)
 
         title = Post.objects.values('title').filter(title=pk)
         title = title[0]['title']
         ip = get_client_ip(request)
-
-        if not get_post(ip, title):
-            posts.views += 1
-            posts.save(update_fields=["views"])
-            serializer = AddPostSerializer(posts, many=False).data
-            context = {'IP': ip,
-                       'add': serializer}
-            return Response(context)
-
+        if request.user.is_authenticated:
+            if not get_post(request.user, title, pk):
+                posts.views += 1
+                posts.save(update_fields=["views"])
         else:
-            return Response(serializer)
+            if not get_post(ip, title, pk):
+                posts.views += 1
+                posts.save(update_fields=["views"])
+        id_post=Post.objects.filter(title=pk).values('id')
+
+        view=Views.objects.get(post=id_post[0]['id'])
+
+        serializer_view=ViewSerializer(view,many=False).data
+
+        serializer = AddPostSerializer(posts, many=False).data
+        context = {'IP': ip,
+                   'add': serializer,
+                   'view':serializer_view
+                   }
+        return Response(context)

@@ -67,3 +67,7 @@ class AddPostSerializer(serializers.ModelSerializer):
                   )
 
 
+class ViewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =Views
+        fields ='__all__'
