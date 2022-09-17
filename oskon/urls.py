@@ -18,7 +18,11 @@ urlpatterns = [
     path('sub/<int:pk>', SubcategoryAPIView.as_view()),
 
     # path('view/<int:pk>',ViewNews.as_view()),
-    path('view/<str:pk>', ViewNews.as_view()),
+    path('view/<str:pk>', DetailPost.as_view()),
+    path('listview/<int:pk>', ListViewApi.as_view()),
+
+    path('phine/<int:pk>', Contacts.as_view()),
+    path('statistica/<int:pk>',StatistictsApi.as_view())
 
 
 

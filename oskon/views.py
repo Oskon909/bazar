@@ -131,105 +131,35 @@ class PostAddViewSet(viewsets.ModelViewSet):
     serializer_class = AddPostSerializer
 
 
-# Просмотр обьвления
-# def get_post(client, title):
-#
-#     data = redis.Redis()
-#     print('ppppppppppp')
-#     client = str(client)
-#     data_value = data.get(client)
-#
-#     print('kkkkkkk')
-#
-#
-#     if data_value is None or data_value.decode('utf-8') != title:
-#         data.mset({client: title})
-#         date=datetime.date()
-#         post=Post.objects.get(title=title)
-#
-#         # if Views.objects.get(date=date).filter(post=post)
-#         #     Views.objects.create(date=date,post=post)
-#
-#         Views.views += 1
-#         Views.save(update_fields=["views"])
-#         return False
-#     else:
-#         return True
-#
+
+
+
+
 
 def get_post(client, title, pk):
-    date = datetime.datetime.now(tz=None)
-    today = date.date()
+    data = redis.Redis()
+    data_value = data.get(str(client))
+    if data_value is None or data_value.decode('utf-8') != title:
+        data.mset({str(client): title})
+        date = datetime.datetime.now(tz=None)
+        today = date.date()
+        # today = datetime.date(year=2022, month=9, day=9)
+        post_object = Post.objects.get(title=pk)
+        view_object = Views.objects.filter(post=post_object).filter(date=today).exists()
 
-    post_object = Post.objects.get(title=pk)
-
-
-
-
-
-
-    try:
-        baza = Baza_view.objects.filter(view_key=post_object).values('ip_or_user', 'date')
-
-        print('lop')
-
-    except:
-
-        Baza_view.objects.create(view_key=post_object, ip_or_user=client, date=today)
-        # baza = Baza_view.objects.filter(view_key=post_object).values('ip_or_user', 'date')
-        Views.objects.create(post=post_object, date=today)
-
-        view_object = Views.objects.get()
-        view_object.views += 1
-        view_object.save(update_fields=["views"])
-
-        return True
-    print('loeree')
-
-
-    list_user=[]
-    list_date=[]
-    for i in baza:
-        list_user.append(str(i['ip_or_user']))
-
-    print('kzkz')
-    for i in baza:
-        if str(i['ip_or_user']) == str(client) and i['date'] == today:
-            print('они равны')
-            print('lllllllllll')
-            return False
-
-
-
-
-    if str(client) in list_user:
-        name=Baza_view.objects.get(ip_or_user=client)
-        name.date=today
-        name.save(update_fields=["date"])
-
-        view_object = Views.objects.get()
-        view_object.views+=1
-        view_object.save(update_fields=["views"])
-        print('hello world')
-
-    else:
-        print('nnnnnnnnnnnnnnnn')
-        Baza_view.objects.create(view_key=post_object ,ip_or_user=client,date=today)
-
-        date_view = Views.objects.filter(post=post_object).filter(date=today).values('date')
-        if date_view == today:
-            pass
-        else:
+        if view_object == False:
             Views.objects.create(post=post_object, date=today)
 
-        name = Baza_view.objects.get(ip_or_user=client)
+        name = Views.objects.filter(post=post_object).filter(date=today).values('pk')
+        name = Views.objects.get(pk=name[0]['pk'])
         name.date = today
         name.save(update_fields=["date"])
+        name.views += 1
+        name.save(update_fields=["views"])
 
-        view_object = Views.objects.get()
-        view_object.views += 1
-        view_object.save(update_fields=["views"])
-
+        return False
+    else:
+        return True
 
 
 def get_client_ip(request):
@@ -242,16 +172,13 @@ def get_client_ip(request):
     return ip
 
 
-class ViewNews(APIView):
+class DetailPost(APIView):
     def get(self, request, pk):
         posts = get_object_or_404(Post, title=pk)
-
-        print(request.user.is_authenticated)
-        print(request.user)
-
         title = Post.objects.values('title').filter(title=pk)
         title = title[0]['title']
         ip = get_client_ip(request)
+
         if request.user.is_authenticated:
             if not get_post(request.user, title, pk):
                 posts.views += 1
@@ -260,15 +187,132 @@ class ViewNews(APIView):
             if not get_post(ip, title, pk):
                 posts.views += 1
                 posts.save(update_fields=["views"])
-        id_post=Post.objects.filter(title=pk).values('id')
 
-        view=Views.objects.get(post=id_post[0]['id'])
+        post_object = Post.objects.get(title=pk)
+        date = datetime.datetime.now(tz=None)
+        today = date.date()
+        view = Views.objects.filter(post=post_object).filter(date=today).exists()
 
-        serializer_view=ViewSerializer(view,many=False).data
+        if not view:
+            Views.objects.create(post=post_object, date=today)
 
+        view = Views.objects.filter(post=post_object).filter(date=today)
+        view = view[0]
+
+        serializer_view = ViewSerializer(view, many=False).data
         serializer = AddPostSerializer(posts, many=False).data
-        context = {'IP': ip,
-                   'add': serializer,
-                   'view':serializer_view
-                   }
+
+        context = {
+            'add': serializer,
+            'view': serializer_view
+        }
         return Response(context)
+
+
+class ListViewApi(APIView):
+    def get(self, request, pk):
+        queryset = Views.objects.filter(post=pk)
+
+        serializer = ViewSerializer(queryset, many=True).data
+        context = {
+
+            'views': serializer
+        }
+        return Response(context)
+
+
+def get_post_number(client, number, pk):
+    data = redis.Redis()
+    data_value = data.get(str(client))
+    client = str(client)
+
+    if data_value is None or data_value.decode('utf-8') != number[0]['phone_number_0']:
+        data.mset({client: number[0]['phone_number_0']})
+
+        date = datetime.datetime.now(tz=None)
+        today = date.date()
+        post_object = Post.objects.filter(pk=pk).values('phone_number')
+        phone_object = PhoneNumber.objects.filter(pk=post_object[0]['phone_number']).values('pk')
+        view_object = ViewsContact.objects.filter(phone=phone_object[0]['pk']).filter(date=today).exists()
+
+        if view_object == False:
+            object_of_phone = PhoneNumber.objects.get(pk=phone_object[0]['pk'])
+            post_object = Post.objects.get(pk=pk)
+            view = Views.objects.get(post=post_object, date=today)
+            ViewsContact.objects.create(phone=object_of_phone, date=today, view_key=view)
+
+        name = ViewsContact.objects.filter(phone=object_of_phone).filter(date=today).values('pk')
+        name = ViewsContact.objects.get(pk=name[0]['pk'])
+        name.date = today
+        name.save(update_fields=["date"])
+        name.views += 1
+        name.save(update_fields=["views"])
+        return False
+    else:
+        return True
+
+
+class Contacts(APIView):
+    def get(self, request, pk):
+        object_of_post = Post.objects.filter(pk=pk).values('phone_number')
+        queryset = PhoneNumber.objects.filter(pk=object_of_post[0]['phone_number'])
+        number = get_object_or_404(PhoneNumber, pk=object_of_post[0]['phone_number'])
+        value_nomber = PhoneNumber.objects.filter(pk=object_of_post[0]['phone_number']).values('phone_number_0')
+        ip = get_client_ip(request)
+
+        if request.user.is_authenticated:
+            if not get_post_number(request.user, value_nomber, pk):
+                number.view += 1
+                number.save(update_fields=["view"])
+        else:
+            if not get_post_number(ip, value_nomber, pk):
+                number.view += 1
+                number.save(update_fields=["view"])
+
+        queryset = queryset[0]
+        serializer = ContactSerializer(queryset, many=False).data
+
+        return Response(serializer)
+
+
+class StatistictsApi(APIView):
+    def get(self, requests, pk):
+        post = Post.objects.get(pk=pk)
+        serializer_post = StatisticsPostSerilizer(post, many=False).data
+        date = datetime.datetime.now(tz=None)
+        month = date.month
+        yaer = date.year
+        today = date.day
+
+        id_post = Post.objects.filter(pk=pk).values('pk')
+        view_every_day = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer, date__month=month)
+        serializer_view_every_day = StatisticsViewSerializer(view_every_day, many=True).data
+
+        id_phonenumber = Post.objects.filter(pk=pk).values('phone_number')
+        number = PhoneNumber.objects.get(pk=id_phonenumber[0]['phone_number'])
+        serializer_view_number = StaticsNumberSerializer(number, many=False).data
+
+        view_today_id = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer,
+                                                                           date__month=month,
+                                                                           date__day=today).values('pk').exists()
+        object_post = Post.objects.get(pk=pk)
+
+        if view_today_id == False:
+            Views.objects.create(post=object_post, date=date)
+            view_today_id = Views.objects.filter(post=object_post).filter(date=date).values('pk')
+        else:
+            view_today_id = Views.objects.filter(post=object_post).filter(date=date).values('pk')
+
+        view_today = Views.objects.get(pk=view_today_id[0]['pk'])
+        serializer_view_today = TodaySerializer(view_today, many=False).data
+
+        context = {
+            'common post view': serializer_post,
+            'view post today': serializer_view_today,
+            'common view number of contacts': serializer_view_number,
+            'view post every day': serializer_view_every_day,
+
+        }
+
+        return Response(context)
+

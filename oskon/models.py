@@ -30,8 +30,8 @@ class City(models.Model):
 
 
 class PhoneNumber(models.Model):
-    phone_number_0 = models.CharField(max_length=10)
-
+    phone_number_0 = models.CharField(max_length=10,default=500000000)
+    view = models.IntegerField(default=0)
     def __str__(self):
         return self.phone_number_0
 
@@ -54,12 +54,19 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
 class Views(models.Model):
-    user = models.CharField(max_length=100,null=True)
+    user = models.CharField(max_length=100,null=True,blank=True)
     date = models.DateField(blank=True,null=True)
     views = models.IntegerField(default=0,blank=True,null=True)
     post = models.ForeignKey(Post, related_name='Views_Post', on_delete=models.CASCADE)
+
+class ViewsContact(models.Model):
+    date = models.DateField(blank=True, null=True)
+    views = models.IntegerField(default=0, blank=True, null=True)
+    phone = models.ForeignKey(PhoneNumber, related_name='contact', on_delete=models.CASCADE)
+    view_key = models.ForeignKey(Views, related_name='view_contact', on_delete=models.CASCADE)
+
+
 
 class Baza_view(models.Model):
     view_key = models.ForeignKey(Post, related_name='baza', on_delete=models.CASCADE)

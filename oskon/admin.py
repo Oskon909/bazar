@@ -13,5 +13,5 @@ admin.site.register(Subscription)
 admin.site.register(Post)
 admin.site.register(Image)
 admin.site.register(Baza_view)
-
+admin.site.register(ViewsContact)
 
