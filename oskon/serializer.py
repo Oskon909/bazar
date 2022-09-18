@@ -47,6 +47,9 @@ class SubcategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'category')
 
 
+
+
+
 # Добавления постов
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,20 +66,25 @@ class AddPostSerializer(serializers.ModelSerializer):
         fields = ('id', 'category', 'subcategory',
                   'title', 'from_price', 'to_price',
                   'description', 'Image_Post', 'city',
-                  'email', 'phone_number', 'views'
+                  'email', 'views'
                   )
 
+class PostCreate(serializers.ModelSerializer):
+    Post_PhoneNumber = AddPostSerializer(many=True, read_only=True)
+    class Meta:
+        model = PhoneNumber
+        fields =['Post_PhoneNumber','phone_number_0']
 
 class ViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Views
-        fields = '__all__'
+        fields = ['date','views']
 
 
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhoneNumber
-        fields = ('phone_number_0', 'view')
+        fields = ('id','phone_number', 'view')
 
 
 # Статистика просмотров

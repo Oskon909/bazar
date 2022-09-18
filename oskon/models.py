@@ -29,18 +29,14 @@ class City(models.Model):
         return self.title
 
 
-class PhoneNumber(models.Model):
-    phone_number_0 = models.CharField(max_length=10,default=500000000)
-    view = models.IntegerField(default=0)
-    def __str__(self):
-        return self.phone_number_0
+
 
 
 class Post(models.Model):
     category = models.ForeignKey(Category, related_name='Post_category', on_delete=models.RESTRICT)
     subcategory = models.ForeignKey(Subcategory, related_name='Post_subcategory', on_delete=models.CASCADE)
     city = models.ForeignKey(City, related_name='Post_City', on_delete=models.CASCADE)
-    phone_number = models.ForeignKey(PhoneNumber, related_name='Post_PhoneNumber', on_delete=models.PROTECT)
+    # phone_number = models.ForeignKey(PhoneNumber, related_name='Post_PhoneNumber', on_delete=models.PROTECT)
     user = models.ForeignKey(get_user_model(), related_name='Post_User', on_delete=models.CASCADE)  ###
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, verbose_name='Фотография')
     title = models.CharField(max_length=100)
@@ -53,6 +49,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PhoneNumber(models.Model):
+    phone_number= models.CharField(max_length=10,default=500000000)
+    view = models.IntegerField(default=0)
+    post_number = models.ForeignKey(Post, related_name='phone_post', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.phone_number
 
 class Views(models.Model):
     user = models.CharField(max_length=100,null=True,blank=True)

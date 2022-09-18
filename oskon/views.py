@@ -1,3 +1,5 @@
+import functools
+
 import redis
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
@@ -13,7 +15,10 @@ from .serializer import *
 from django_filters import rest_framework as filters
 import datetime
 
-
+################
+from django.db import connection, reset_queries
+import time
+import functools
 # Create your views here.
 # Просмотр каталога и обьявления
 
@@ -131,7 +136,9 @@ class PostAddViewSet(viewsets.ModelViewSet):
     serializer_class = AddPostSerializer
 
 
-
+class list(generics.CreateAPIView):
+    queryset = PhoneNumber
+    serializer_class = PostCreate
 
 
 
@@ -144,7 +151,7 @@ def get_post(client, title, pk):
         date = datetime.datetime.now(tz=None)
         today = date.date()
         # today = datetime.date(year=2022, month=9, day=9)
-        post_object = Post.objects.get(title=pk)
+        post_object = Post.objects.get(pk=pk)  #4
         view_object = Views.objects.filter(post=post_object).filter(date=today).exists()
 
         if view_object == False:
@@ -174,8 +181,8 @@ def get_client_ip(request):
 
 class DetailPost(APIView):
     def get(self, request, pk):
-        posts = get_object_or_404(Post, title=pk)
-        title = Post.objects.values('title').filter(title=pk)
+        posts = get_object_or_404(Post, pk=pk)#1
+        title = Post.objects.values('title').filter(pk=pk)#2
         title = title[0]['title']
         ip = get_client_ip(request)
 
@@ -188,7 +195,7 @@ class DetailPost(APIView):
                 posts.views += 1
                 posts.save(update_fields=["views"])
 
-        post_object = Post.objects.get(title=pk)
+        post_object = Post.objects.get(pk=pk)#3
         date = datetime.datetime.now(tz=None)
         today = date.date()
         view = Views.objects.filter(post=post_object).filter(date=today).exists()
@@ -252,6 +259,7 @@ def get_post_number(client, number, pk):
         return True
 
 
+
 class Contacts(APIView):
     def get(self, request, pk):
         object_of_post = Post.objects.filter(pk=pk).values('phone_number')
@@ -288,9 +296,6 @@ class StatistictsApi(APIView):
         view_every_day = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer, date__month=month)
         serializer_view_every_day = StatisticsViewSerializer(view_every_day, many=True).data
 
-        id_phonenumber = Post.objects.filter(pk=pk).values('phone_number')
-        number = PhoneNumber.objects.get(pk=id_phonenumber[0]['phone_number'])
-        serializer_view_number = StaticsNumberSerializer(number, many=False).data
 
         view_today_id = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer,
                                                                            date__month=month,
@@ -306,6 +311,18 @@ class StatistictsApi(APIView):
         view_today = Views.objects.get(pk=view_today_id[0]['pk'])
         serializer_view_today = TodaySerializer(view_today, many=False).data
 
+        # id_phonenumber = Post.objects.filter(pk=pk).values('phone_number')
+        # number = PhoneNumber.objects.get(pk=id_phonenumber[0]['phone_number'])
+        # serializer_view_number = StaticsNumberSerializer(number, many=False).data
+
+        post_object =Post.objects.get(pk=pk)
+        phone_object=PhoneNumber.objects.get(post_number=post_object)
+        view_contact_objects=ViewsContact.objects.get(phone=phone_object)
+        serializer_view_number = StaticsNumberSerializer(phone_object, many=False).data
+
+
+
+
         context = {
             'common post view': serializer_post,
             'view post today': serializer_view_today,
@@ -315,4 +332,36 @@ class StatistictsApi(APIView):
         }
 
         return Response(context)
+
+
+########################################################################
+def query_debugger(func):
+    @functools.wraps(func)
+    def inner_func(*args, **kwargs):
+        reset_queries()
+
+        start_queries = len(connection.queries)
+
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+
+        end_queries = len(connection.queries)
+
+        print(f"Function : {func.__name__}")
+        print(f"Number of Queries : {end_queries - start_queries}")
+        print(f"Finished in : {(end - start):.2f}s")
+        return result
+
+
+
+@query_debugger
+def get(self,request):
+    qwery=Post.objects.all()
+
+
+
+
+    return Response('kasdvc')
+
 
