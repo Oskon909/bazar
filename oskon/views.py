@@ -181,8 +181,9 @@ def get_client_ip(request):
 
 class DetailPost(APIView):
     def get(self, request, pk):
-        posts = get_object_or_404(Post, pk=pk)#1
-        title = Post.objects.values('title').filter(pk=pk)#2
+
+        posts = Post.objects.select_related('category').select_related('subcategory').get(pk=pk)
+        title = Post.objects.values('title').filter(pk=pk)
         title = title[0]['title']
         ip = get_client_ip(request)
 
@@ -206,12 +207,14 @@ class DetailPost(APIView):
         view = Views.objects.filter(post=post_object).filter(date=today)
         view = view[0]
 
+
         serializer_view = ViewSerializer(view, many=False).data
         serializer = AddPostSerializer(posts, many=False).data
 
         context = {
-            'add': serializer,
-            'view': serializer_view
+            'add': {**serializer, 'category': posts.category.title,
+                    'subcategory':posts.subcategory.title},
+            'view': serializer_view,
         }
         return Response(context)
 
@@ -311,9 +314,7 @@ class StatistictsApi(APIView):
         view_today = Views.objects.get(pk=view_today_id[0]['pk'])
         serializer_view_today = TodaySerializer(view_today, many=False).data
 
-        # id_phonenumber = Post.objects.filter(pk=pk).values('phone_number')
-        # number = PhoneNumber.objects.get(pk=id_phonenumber[0]['phone_number'])
-        # serializer_view_number = StaticsNumberSerializer(number, many=False).data
+
 
         post_object =Post.objects.get(pk=pk)
         phone_object=PhoneNumber.objects.get(post_number=post_object)
@@ -355,13 +356,6 @@ def query_debugger(func):
 
 
 
-@query_debugger
-def get(self,request):
-    qwery=Post.objects.all()
 
-
-
-
-    return Response('kasdvc')
 
 

@@ -69,6 +69,10 @@ class AddPostSerializer(serializers.ModelSerializer):
                   'email', 'views'
                   )
 
+    # def to_representation(self, instance):
+    #     data = super(AddPostSerializer, self).to_representation(instance)
+    #     data['category'] = instance.category.title
+    #     return data
 class PostCreate(serializers.ModelSerializer):
     Post_PhoneNumber = AddPostSerializer(many=True, read_only=True)
     class Meta:

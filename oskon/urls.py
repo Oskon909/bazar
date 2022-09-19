@@ -28,7 +28,7 @@ urlpatterns = [
     path('post',list.as_view()),
     path('contact/<int:pk>',Contacts_1.as_view()),
 
-    path('lll',get)
+
 
 
 
