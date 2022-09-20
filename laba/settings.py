@@ -55,6 +55,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 
+
 ]
 
 ROOT_URLCONF = "laba.urls"
@@ -166,3 +167,84 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+
+REST_FRAMEWORK = {
+  'DEFAULT_PERMISSION_CLASSES': (
+      'rest_framework.permissions.AllowAny',
+  ),
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+      'rest_framework.authentication.SessionAuthentication',
+      'rest_framework.authentication.BasicAuthentication',
+  ),
+  'EXCEPTION_HANDLER': 'logging_formatter.exception_handler.handle_exception'
+}
+
+
+LOGGING = {
+   'version': 1,
+   'disable_existing_loggers': True,
+   'filters': {
+       'filter_info_level': {
+           '()': 'logging_formatter.log_middleware.FilterLevels',
+           'filter_levels' : [
+               "INFO"
+           ]
+       },
+       'filter_error_level': {
+           '()': 'logging_formatter.log_middleware.FilterLevels',
+           'filter_levels' : [
+               "ERROR"
+           ]
+       },
+       'filter_warning_level': {
+           '()': 'logging_formatter.log_middleware.FilterLevels',
+           'filter_levels' : [
+               "WARNING"
+           ]
+       }
+   },
+   'formatters': {
+       'info-formatter': {
+           'format': '%(levelname)s : %(message)s - [in %(pathname)s:%(lineno)d]'
+       },
+       'error-formatter': {
+           'format': '%(levelname)s : %(asctime)s {%(module)s} [%(funcName)s] %(message)s- [in %(pathname)s:%(lineno)d]',
+           'datefmt': '%Y-%m-%d %H:%M'
+       },
+       'short': {
+           'format': '%(levelname)s : %(message)s'
+       }
+   },
+   'handlers': {
+       'customHandler_1': {
+           'formatter': 'info-formatter',
+           'class': 'logging_formatter.log_middleware.DatabaseLoggingHandler',
+           'database': 'logging_formatter',
+           'collection': 'logs',
+           'filters': ['filter_info_level'],
+       },
+       'customHandler_2': {
+           'formatter': 'error-formatter',
+           'class': 'logging_formatter.log_middleware.DatabaseLoggingHandler',
+           'database': 'logging_formatter',
+           'collection': 'logs',
+           'filters': ['filter_error_level'],
+       },
+       'customHandler_3': {
+           'formatter': 'short',
+           'class': 'logging.StreamHandler',
+           'filters': ['filter_warning_level'],
+       },
+   },
+   'loggers': {
+       'customLogger': {
+           'handlers': [
+               'customHandler_1',
+               'customHandler_2',
+               'customHandler_3'
+           ],
+           'level': 'DEBUG',
+       },
+   },
+}
