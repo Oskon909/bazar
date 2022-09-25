@@ -19,6 +19,8 @@ import datetime
 from django.db import connection, reset_queries
 import time
 import functools
+
+
 # Create your views here.
 # Просмотр каталога и обьявления
 
@@ -141,8 +143,6 @@ class list(generics.CreateAPIView):
     serializer_class = PostCreate
 
 
-
-
 def get_post(client, title, pk):
     data = redis.Redis()
     data_value = data.get(str(client))
@@ -151,7 +151,7 @@ def get_post(client, title, pk):
         date = datetime.datetime.now(tz=None)
         today = date.date()
         # today = datetime.date(year=2022, month=9, day=9)
-        post_object = Post.objects.get(pk=pk)  #4
+        post_object = Post.objects.get(pk=pk)  # 4
         view_object = Views.objects.filter(post=post_object).filter(date=today).exists()
 
         if view_object == False:
@@ -182,7 +182,7 @@ def get_client_ip(request):
 class DetailPost(APIView):
     def get(self, request, pk):
 
-        posts = Post.objects.select_related('category').select_related('subcategory').get(pk=pk)
+        posts = Post.objects.select_related('category').get(pk=pk)
         title = Post.objects.values('title').filter(pk=pk)
         title = title[0]['title']
         ip = get_client_ip(request)
@@ -196,7 +196,7 @@ class DetailPost(APIView):
                 posts.views += 1
                 posts.save(update_fields=["views"])
 
-        post_object = Post.objects.get(pk=pk)#3
+        post_object = Post.objects.get(pk=pk)  # 3
         date = datetime.datetime.now(tz=None)
         today = date.date()
         view = Views.objects.filter(post=post_object).filter(date=today).exists()
@@ -207,13 +207,12 @@ class DetailPost(APIView):
         view = Views.objects.filter(post=post_object).filter(date=today)
         view = view[0]
 
-
         serializer_view = ViewSerializer(view, many=False).data
         serializer = AddPostSerializer(posts, many=False).data
-
+        posts2 = Post.objects.prefetch_related('subcategory').get(pk=pk)
         context = {
             'add': {**serializer, 'category': posts.category.title,
-                    'subcategory':posts.subcategory.title},
+                    'subcategory': posts2.subcategory.title},
             'view': serializer_view,
         }
         return Response(context)
@@ -262,7 +261,6 @@ def get_post_number(client, number, pk):
         return True
 
 
-
 class Contacts(APIView):
     def get(self, request, pk):
         object_of_post = Post.objects.filter(pk=pk).values('phone_number')
@@ -299,7 +297,6 @@ class StatistictsApi(APIView):
         view_every_day = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer, date__month=month)
         serializer_view_every_day = StatisticsViewSerializer(view_every_day, many=True).data
 
-
         view_today_id = Views.objects.filter(post=id_post[0]['pk']).filter(date__year=yaer,
                                                                            date__month=month,
                                                                            date__day=today).values('pk').exists()
@@ -314,15 +311,10 @@ class StatistictsApi(APIView):
         view_today = Views.objects.get(pk=view_today_id[0]['pk'])
         serializer_view_today = TodaySerializer(view_today, many=False).data
 
-
-
-        post_object =Post.objects.get(pk=pk)
-        phone_object=PhoneNumber.objects.get(post_number=post_object)
-        view_contact_objects=ViewsContact.objects.get(phone=phone_object)
+        post_object = Post.objects.get(pk=pk)
+        phone_object = PhoneNumber.objects.get(post_number=post_object)
+        view_contact_objects = ViewsContact.objects.get(phone=phone_object)
         serializer_view_number = StaticsNumberSerializer(phone_object, many=False).data
-
-
-
 
         context = {
             'common post view': serializer_post,
@@ -353,9 +345,3 @@ def query_debugger(func):
         print(f"Number of Queries : {end_queries - start_queries}")
         print(f"Finished in : {(end - start):.2f}s")
         return result
-
-
-
-
-
-
