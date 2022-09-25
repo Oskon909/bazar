@@ -21,7 +21,7 @@ import time
 import functools
 
 
-# Create your views here.
+
 # Просмотр каталога и обьявления
 
 class CategoryAPIView(generics.ListAPIView):
@@ -29,10 +29,6 @@ class CategoryAPIView(generics.ListAPIView):
     serializer_class = CategorySerializer
 
 
-# def get(self, request, pr):
-#        movie = Product.objects.filter(category=pr)
-#        serializer = ListProductSerializer
-#        return Response(serializer(movie, many=True).data)
 #
 class SubscriptionApi(APIView):
 
@@ -345,3 +341,5 @@ def query_debugger(func):
         print(f"Number of Queries : {end_queries - start_queries}")
         print(f"Finished in : {(end - start):.2f}s")
         return result
+def gas():
+    print('Hello')
